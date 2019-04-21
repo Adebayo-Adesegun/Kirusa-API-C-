@@ -52,9 +52,9 @@ namespace KonnectAPIC
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Console.WriteLine(ex.ToString());
             }
+            return false;
         }
 
     }
