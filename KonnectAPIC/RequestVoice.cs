@@ -7,9 +7,10 @@ namespace KonnectAPIC
     public class RequestVoice
     {
         // Unique transaction id for the request
-        public string Id { get; set; }
-        public List<string> Recipient { get; set; }
-        public string Caller_id { get; set; }
-        public string Media_url { get; set; }
+        public string id { get; set; }
+        public List<string> recipient { get; set; }
+        public string caller_id { get; set; }
+        public string direction { get; set; }
+        public string media_url { get; set; }
     }
 }

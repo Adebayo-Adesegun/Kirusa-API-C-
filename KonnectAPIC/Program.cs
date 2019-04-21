@@ -16,6 +16,7 @@ namespace KonnectAPIC
             num.Add("+2347085626242");
             num.Add("+2347013251237");
             num.Add("+2348066342300");
+            num.Add("+2347019780918");
             #endregion
 
 
@@ -25,21 +26,22 @@ namespace KonnectAPIC
             #endregion
 
 
-            #region Send SMS
-            RequestSMS sms = new RequestSMS();
-            sms.Id = Guid.NewGuid().ToString();
-            sms.To = num;
-            sms.Body = "Kirusa: Test Bulk Message from Adebayo Adesegun Daniel.";
-            KonnectAPI konnect = new KonnectAPI(authkey, accountId);
-            konnect.SendSMS(sms).Wait();
-            #endregion
+            //#region Send SMS
+            //RequestSMS sms = new RequestSMS();
+            //sms.Id = Guid.NewGuid().ToString();
+            //sms.To = num;
+            //sms.Body = "Kirusa: Test Bulk Message from Adebayo Adesegun Daniel.";
+            //KonnectAPI konnect = new KonnectAPI(authkey, accountId);
+            //konnect.SendSMS(sms).Wait();
+            //#endregion
 
             #region SEND VOICE
             RequestVoice voice = new RequestVoice();
-            voice.Id = Guid.NewGuid().ToString();
-            voice.Caller_id = "0800";
-            voice.Recipient = num;
-            voice.Media_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+            voice.id = Guid.NewGuid().ToString();
+            voice.recipient = num;
+            voice.caller_id = "+23417006120";
+            voice.media_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+            voice.direction = "outbound";
             KonnectAPI kon = new KonnectAPI(authkey, accountId);
             kon.SendVoice(voice).Wait();
             #endregion
