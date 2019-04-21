@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KonnectAPIC
 {
-    public class Request
+    public class RequestSMS
     {
         // Unique transaction id for the request
         public string id { get; set; }

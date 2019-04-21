@@ -17,10 +17,10 @@ namespace KonnectAPIC
 
 
             string accountId = "vS36AafGOOkZcUjIQQqwSQ==";
-            string authkey = "OJug6FFgXObsKNg83TJsXwm_TK0v3YZlPwFJlaBe5uo= "; 
-            
+            string authkey = "OJug6FFgXObsKNg83TJsXwm_TK0v3YZlPwFJlaBe5uo= ";
 
-            Request req = new Request();
+
+            RequestSMS req = new RequestSMS();
             req.id = Guid.NewGuid().ToString();
             req.to = num;
             req.body = "Kirusa: Test Bulk Message from Adebayo Adesegun Daniel.";

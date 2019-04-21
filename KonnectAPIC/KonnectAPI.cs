@@ -32,7 +32,7 @@ namespace KonnectAPIC
         /// </summary>
         /// <param name="request">The request object</param>
         /// <returns></returns>
-        public async Task<bool> SendSMS(Request request)
+        public async Task<bool> SendSMS(RequestSMS request)
         {
             try
             {
@@ -55,6 +55,22 @@ namespace KonnectAPIC
                 Console.WriteLine(ex.ToString());
             }
             return false;
+        }
+        public async Task<bool> SendVoice()
+        {
+            try
+            {
+                var url = baseurl + "Calls";
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return false;
+
         }
 
     }
