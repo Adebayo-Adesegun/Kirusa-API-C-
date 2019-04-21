@@ -56,18 +56,33 @@ namespace KonnectAPIC
             }
             return false;
         }
-        public async Task<bool> SendVoice()
+
+        /// <summary>
+        /// Send Voice Service
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> SendVoice(RequestVoice request)
         {
             try
             {
-                var url = baseurl + "Calls";
+                var uri = baseurl + "Calls";
+                var content = JsonConvert.SerializeObject(request, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var buffer = Encoding.UTF8.GetBytes(content);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = await _httpClient.PostAsync(uri, byteContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    return true;
+                }
 
-
+                return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Console.WriteLine(ex.ToString());
             }
             return false;
 

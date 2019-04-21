@@ -7,15 +7,15 @@ namespace KonnectAPIC
     public class RequestSMS
     {
         // Unique transaction id for the request
-        public string id { get; set; }
+        public string Id { get; set; }
         //The sender phone number. If not specified, the default sender id is used.
-        public string from { get; set; }
+        public string From { get; set; }
         // The destination phone number, multiple phone numbers should be passed as a JSON array separated by comma.
-        public List<string> to { get; set; }
+        public List<string> To { get; set; }
         // The string to mask the sender.
-        public string sender_mask { get; set; }
+        public string Sender_mask { get; set; }
        // The full text of the message
-        public string body { get; set; }
+        public string Body { get; set; }
 
     }
 
