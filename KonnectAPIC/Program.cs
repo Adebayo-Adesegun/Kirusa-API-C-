@@ -28,6 +28,11 @@ namespace KonnectAPIC
 
             KonnectAPI konnect = new KonnectAPI(authkey,accountId);
             konnect.SendSMS(req).Wait();
+
+
+            Console.WriteLine("Operation completed");
+            Console.ReadLine();
+
         }
     }
 }
