@@ -11,6 +11,7 @@ namespace KonnectAPIC
    public class KonnectAPI
     {
         private readonly HttpClient _httpClient;
+        Response resp;
         string baseurl;
         /// <summary>
         /// Initialize 
@@ -42,17 +43,19 @@ namespace KonnectAPIC
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var response = await _httpClient.PostAsync(uri, byteContent);
-                if (response.IsSuccessStatusCode)
+                var result = response.Content.ReadAsStringAsync().Result;
+                resp = JsonConvert.DeserializeObject<Response>(result);
+                if (resp.status == "ok")
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
                     return true;
                 }
-
+                    
                 return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString() + $"Error code returned: {resp.error_code} with reason {resp.error_reason}");
+                
             }
             return false;
         }
@@ -72,12 +75,12 @@ namespace KonnectAPIC
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var response = await _httpClient.PostAsync(uri, byteContent);
-                if (response.IsSuccessStatusCode)
+                var result = response.Content.ReadAsStringAsync().Result;
+                resp = JsonConvert.DeserializeObject<Response>(result);
+                if (resp.status == "ok")
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
                     return true;
                 }
-
                 return false;
             }
             catch (Exception ex)
@@ -85,7 +88,6 @@ namespace KonnectAPIC
                 Console.WriteLine(ex.ToString());
             }
             return false;
-
         }
 
     }
