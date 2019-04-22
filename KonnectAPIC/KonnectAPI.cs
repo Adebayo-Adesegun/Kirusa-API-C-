@@ -14,7 +14,7 @@ namespace KonnectAPIC
         Response resp;
         string baseurl;
         /// <summary>
-        /// Initialize 
+        /// Initialize constructor with authkey and accountid parameters. 
         /// </summary>
         /// <param name="authKey"></param>
         /// <param name="authId"></param>
@@ -54,8 +54,7 @@ namespace KonnectAPIC
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString() + $"Error code returned: {resp.error_code} with reason {resp.error_reason}");
-                
+                Console.WriteLine(ex.ToString() + $"Error code returned: {resp.error_code} with reason {resp.error_reason}");               
             }
             return false;
         }
@@ -85,7 +84,7 @@ namespace KonnectAPIC
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString() + $"Error code returned: {resp.error_code} with reason {resp.error_reason}");
             }
             return false;
         }
